@@ -10,10 +10,15 @@ contract CounterScript is Script {
     function setUp() public {}
 
     function run() public {
-        vm.startBroadcast();
+        // Start the broadcast
+        vm.startBroadcast(vm.envUint("PRIVATE_KEY"));
 
+        // Deploy the contract
         crowdfunding = new Crowdfunding();
 
+        // Stop broadcasting
         vm.stopBroadcast();
+
+        console.log("AreaCalculator deployed to:", address(crowdfunding));
     }
 }
