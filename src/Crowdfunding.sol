@@ -27,11 +27,6 @@ contract Crowdfunding {
 
     event CampaignEnded(string _id, uint256 _amountRaised, address _benefactor);
 
-    modifier onlyOwner() {
-        require(msg.sender == owner, "Only owner can call this function");
-        _;
-    }
-
     modifier campaignExists(string memory _id) {
         require(bytes(campaigns[_id].id).length != 0, "Campaign does not exist");
         _;
@@ -40,10 +35,6 @@ contract Crowdfunding {
     modifier campaignNotEnded(string memory _id) {
         require(!campaigns[_id].ended, "Campaign has already ended");
         _;
-    }
-
-    constructor() {
-        owner = msg.sender;
     }
 
     function createCampaign(
@@ -74,6 +65,7 @@ contract Crowdfunding {
         Campaign storage campaign = campaigns[_id];
 
         require(block.timestamp <= campaign.deadline, "Campaign has ended");
+        require(msg.value > 1000 wei, "You can not donate less than 1000 wei");
 
         campaign.amountRaised += msg.value;
 
@@ -87,16 +79,12 @@ contract Crowdfunding {
 
         campaign.ended = true;
 
-        // Transfer funds to the benefactor
-        (bool sent,) = payable(campaign.benefactor).call{value: campaign.amountRaised}("");
-        require(sent, "Failed to send funds to benefactor");
+        if (campaign.amountRaised > 0) {
+            // Transfer funds to the benefactor
+            (bool sent,) = payable(campaign.benefactor).call{value: campaign.amountRaised}("");
+            require(sent, "Failed to send funds to benefactor");
 
-        emit CampaignEnded(_id, campaign.amountRaised, campaign.benefactor);
-    }
-
-    //Withdraw leftover funds by the contract owner
-    function withdraw() external onlyOwner {
-        require(address(this).balance > 0, "No funds available to withdraw");
-        payable(owner).transfer(address(this).balance);
+            emit CampaignEnded(_id, campaign.amountRaised, campaign.benefactor);
+        }
     }
 }
