@@ -20,12 +20,17 @@ contract Crowdfunding {
 
     // Events
     event CampaignCreated(
-        string _id, string _title, string _description, address _benefactor, uint256 _goal, uint256 _deadline
+        string indexed _id,
+        string _title,
+        string _description,
+        address indexed _benefactor,
+        uint256 _goal,
+        uint256 _deadline
     );
 
-    event DonationReceived(string _id, address _donor, uint256 _amount);
+    event DonationReceived(string indexed _id, address indexed _donor, uint256 _amount);
 
-    event CampaignEnded(string _id, uint256 _amountRaised, address _benefactor);
+    event CampaignEnded(string indexed _id, uint256 _amountRaised, address indexed _benefactor);
 
     modifier campaignExists(string memory _id) {
         require(bytes(campaigns[_id].id).length != 0, "Campaign does not exist");
