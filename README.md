@@ -4,15 +4,8 @@
 
 ---
 
-Hash: 0xeb04299eab63d8064a1ac9be57605834ab274b10e7a0c9af5e2f60bb3776d468
-
----
-
-Contract Address: 0x4B1BEE8b6Fd6796DC4ff4798783356D4Cb803653
-
----
-
-Block: 6564844
+Contract Old Address: 0x4B1BEE8b6Fd6796DC4ff4798783356D4Cb803653
+Contract new Address: 0xfa616cdde16735510ab84f91c2c083b409ddbb80
 
 ---
 

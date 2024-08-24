@@ -4,7 +4,7 @@ pragma solidity ^0.8.26;
 import {Script, console} from "forge-std/Script.sol";
 import {Crowdfunding} from "../src/Crowdfunding.sol";
 
-contract CounterScript is Script {
+contract CrowdfundingScript is Script {
     Crowdfunding public crowdfunding;
 
     function setUp() public {}
@@ -19,6 +19,6 @@ contract CounterScript is Script {
         // Stop broadcasting
         vm.stopBroadcast();
 
-        console.log("AreaCalculator deployed to:", address(crowdfunding));
+        console.log("Crowdfunding deployed to:", address(crowdfunding));
     }
 }
