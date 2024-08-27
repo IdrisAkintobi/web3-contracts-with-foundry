@@ -6,6 +6,8 @@ solc_version = "0.8.26"
 optimizer = false
 optimizer_runs = 200
 
+remappings = ["@openzeppelin/=lib/openzeppelin-contracts/"]
+
 [rpc_endpoints]
 sepolia = "${SEPOLIA_RPC_URL}"
 
