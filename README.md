@@ -19,6 +19,16 @@ Address: 0xF5fb7D1d10706417D1fA16C1E2b573332b6aF87C
 
 ---
 
+### AreaCalculator
+
+**ASmart contract to calculate square, rectangle and triangle areas.**
+
+---
+
+Address: 0xD5815DC51D100650BA18A1818cEEd3c0a13d1609
+
+---
+
 ## Usage
 
 ---
