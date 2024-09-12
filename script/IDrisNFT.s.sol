@@ -4,7 +4,7 @@ pragma solidity ^0.8.26;
 import {Script, console} from "forge-std/Script.sol";
 import {IDrisNFT} from "../src/IDrisNFT.sol";
 
-contract CrowdfundingScript is Script {
+contract IDrisNFTScript is Script {
     IDrisNFT public iDrisNFT;
 
     function setUp() public {}
@@ -13,7 +13,7 @@ contract CrowdfundingScript is Script {
         address initialOwner = vm.envAddress("INITIAL_OWNER");
 
         // Start the broadcast
-        vm.startBroadcast(vm.envUint("PRIVATE_KEY"));
+        vm.startBroadcast(vm.envUint("DO_NOT_LEAK"));
 
         // Deploy the contract
         iDrisNFT = new IDrisNFT(initialOwner);
