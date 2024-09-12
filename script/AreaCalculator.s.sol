@@ -11,7 +11,7 @@ contract AreaCalculatorScript is Script {
 
     function run() external {
         // Start the broadcast
-        vm.startBroadcast(vm.envUint("PRIVATE_KEY"));
+        vm.startBroadcast(vm.envUint("DO_NOT_LEAK"));
 
         // Deploy the contract
         areaCalculator = new AreaCalculator();
