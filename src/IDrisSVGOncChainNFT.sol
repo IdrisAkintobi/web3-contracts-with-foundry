@@ -14,9 +14,7 @@ contract IDrisSVGOncChainNFT is ERC721URIStorage, Ownable {
     uint256 public tokenCounter;
     mapping(string => bool) private _tokenURIExists;
 
-    constructor(
-        address initialOwner
-    ) ERC721("IDrisSVGOncChainNFT", "ISVGNC") Ownable(initialOwner) {}
+    constructor(address initialOwner) ERC721("IDrisSVGOncChainNFT", "ISVGNC") Ownable(initialOwner) {}
 
     function createNFT(
         address _to,
@@ -28,11 +26,7 @@ contract IDrisSVGOncChainNFT is ERC721URIStorage, Ownable {
 
         uint256 newTokenId = tokenCounter;
         string memory svgImageURI = svgToImageURI(_base64SVGImage);
-        string memory tokenURI = generateTokenMetadata(
-            svgImageURI,
-            _svgImageName,
-            _svgImageDescription
-        );
+        string memory tokenURI = generateTokenMetadata(svgImageURI, _svgImageName, _svgImageDescription);
 
         _safeMint(_to, newTokenId);
         _setTokenURI(newTokenId, tokenURI);
@@ -44,40 +38,37 @@ contract IDrisSVGOncChainNFT is ERC721URIStorage, Ownable {
     }
 
     /* Converts SVG to Base64 image uri */
-    function svgToImageURI(
-        string memory svg
-    ) private pure returns (string memory) {
+    function svgToImageURI(string memory svg) private pure returns (string memory) {
         string memory baseURL = "data:image/svg+xml;base64,";
         string memory svgBase64Encoded = Base64.encode(bytes(svg));
         return string(abi.encodePacked(baseURL, svgBase64Encoded));
     }
 
     /* Generate token metadata */
-    function generateTokenMetadata(
-        string memory svgURI,
-        string memory svgName,
-        string memory svgDescription
-    ) private pure returns (string memory) {
-        return
-            string(
-                abi.encodePacked(
-                    "data:application/json;base64,",
-                    Base64.encode(
-                        bytes(
-                            abi.encodePacked(
-                                '{"name": "',
-                                svgName,
-                                '", ',
-                                '"description": "',
-                                svgDescription,
-                                '", ',
-                                '"image": "',
-                                svgURI,
-                                '"}'
-                            )
+    function generateTokenMetadata(string memory svgURI, string memory svgName, string memory svgDescription)
+        private
+        pure
+        returns (string memory)
+    {
+        return string(
+            abi.encodePacked(
+                "data:application/json;base64,",
+                Base64.encode(
+                    bytes(
+                        abi.encodePacked(
+                            '{"name": "',
+                            svgName,
+                            '", ',
+                            '"description": "',
+                            svgDescription,
+                            '", ',
+                            '"image": "',
+                            svgURI,
+                            '"}'
                         )
                     )
                 )
-            );
+            )
+        );
     }
 }

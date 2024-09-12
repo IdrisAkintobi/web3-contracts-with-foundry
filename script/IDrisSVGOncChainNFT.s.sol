@@ -21,9 +21,6 @@ contract IDrisSVGOncChainNFTScript is Script {
         // Stop broadcasting
         vm.stopBroadcast();
 
-        console.log(
-            "IDrisOncChainNFT contract deployed to:",
-            address(iDrisSVGOncChainNFT)
-        );
+        console.log("IDrisSVGOncChainNFTScript contract deployed to:", address(iDrisSVGOncChainNFT));
     }
 }
