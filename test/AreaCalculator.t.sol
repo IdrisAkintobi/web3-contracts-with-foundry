@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.26;
 
-import {Test, console} from "forge-std/Test.sol";
-import {AreaCalculator} from "../src/AreaCalculator.sol";
+import { Test, console } from "forge-std/Test.sol";
+import { AreaCalculator } from "../src/AreaCalculator.sol";
 
 contract AreaCalculatorTest is Test {
     AreaCalculator public areaCalculator;

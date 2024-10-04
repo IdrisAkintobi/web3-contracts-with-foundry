@@ -2,10 +2,10 @@
 pragma solidity ^0.8.26;
 
 import { Script, console } from "forge-std/Script.sol";
-import { Crowdfunding } from "../src/Crowdfunding.sol";
+import { MulticallV2 } from "../src/MulticallV2.sol";
 
 contract CrowdfundingScript is Script {
-    Crowdfunding public crowdfunding;
+    MulticallV2 public multicallV2;
 
     function setUp() public { }
 
@@ -14,11 +14,11 @@ contract CrowdfundingScript is Script {
         vm.startBroadcast(vm.envUint("DO_NOT_LEAK"));
 
         // Deploy the contract
-        crowdfunding = new Crowdfunding();
+        multicallV2 = new MulticallV2();
 
         // Stop broadcasting
         vm.stopBroadcast();
 
-        console.log("Crowdfunding deployed to:", address(crowdfunding));
+        console.log("MulticallV2 deployed to:", address(multicallV2));
     }
 }

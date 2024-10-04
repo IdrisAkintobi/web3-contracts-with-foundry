@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.26;
 
-import {Script, console} from "forge-std/Script.sol";
-import {AreaCalculator} from "../src/AreaCalculator.sol";
+import { Script, console } from "forge-std/Script.sol";
+import { AreaCalculator } from "../src/AreaCalculator.sol";
 
 contract AreaCalculatorScript is Script {
     AreaCalculator public areaCalculator;
 
-    function setUp() internal {}
+    function setUp() internal { }
 
     function run() external {
         // Start the broadcast

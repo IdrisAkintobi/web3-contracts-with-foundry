@@ -86,7 +86,7 @@ contract Crowdfunding {
 
         if (campaign.amountRaised > 0) {
             // Transfer funds to the benefactor
-            (bool sent,) = payable(campaign.benefactor).call{value: campaign.amountRaised}("");
+            (bool sent,) = payable(campaign.benefactor).call{ value: campaign.amountRaised }("");
             require(sent, "Failed to send funds to benefactor");
 
             emit CampaignEnded(_id, campaign.amountRaised, campaign.benefactor);

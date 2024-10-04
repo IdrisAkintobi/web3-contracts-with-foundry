@@ -3,7 +3,7 @@ pragma solidity ^0.8.26;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import {Base64} from "../lib/Base64.sol";
+import { Base64 } from "../lib/Base64.sol";
 
 //@Author IdrisAkintobi
 // NOTE: This contract is for **educational purposes only**.
@@ -14,7 +14,7 @@ contract IDrisSVGOncChainNFT is ERC721URIStorage, Ownable {
     uint256 public tokenCounter;
     mapping(string => bool) private _tokenURIExists;
 
-    constructor(address initialOwner) ERC721("IDrisSVGOncChainNFT", "ISVGNC") Ownable(initialOwner) {}
+    constructor(address initialOwner) ERC721("IDrisSVGOncChainNFT", "ISVGNC") Ownable(initialOwner) { }
 
     function createNFT(
         address _to,
