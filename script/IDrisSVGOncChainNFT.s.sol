@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.26;
 
-import {Script, console} from "forge-std/Script.sol";
-import {IDrisSVGOncChainNFT} from "../src/IDrisSVGOncChainNFT.sol";
+import { Script, console } from "forge-std/Script.sol";
+import { IDrisSVGOncChainNFT } from "../src/IDrisSVGOncChainNFT.sol";
 
 contract IDrisSVGOncChainNFTScript is Script {
     IDrisSVGOncChainNFT public iDrisSVGOncChainNFT;
 
-    function setUp() public {}
+    function setUp() public { }
 
     function run() public {
         address initialOwner = vm.envAddress("INITIAL_OWNER");

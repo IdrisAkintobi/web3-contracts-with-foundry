@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.26;
 
-import {Test, console} from "forge-std/Test.sol";
-import {Crowdfunding} from "../src/Crowdfunding.sol";
+import { Test, console } from "forge-std/Test.sol";
+import { Crowdfunding } from "../src/Crowdfunding.sol";
 
 contract CrowdfundingTest is Test {
     Crowdfunding public crowdfunding;
@@ -59,7 +59,7 @@ contract CrowdfundingTest is Test {
 
         // Simulate a donation
         vm.prank(donor);
-        crowdfunding.donateToCampaign{value: 10000 wei}("campaign2");
+        crowdfunding.donateToCampaign{ value: 10000 wei }("campaign2");
 
         // Verify that the donation was added
         (,,,,,, uint256 amountRaised,) = crowdfunding.campaigns("campaign2");
@@ -78,7 +78,7 @@ contract CrowdfundingTest is Test {
         // Attempt to donate after the deadline
         vm.prank(donor);
         vm.expectRevert("Campaign has ended");
-        crowdfunding.donateToCampaign{value: 0.5 ether}("campaign3");
+        crowdfunding.donateToCampaign{ value: 0.5 ether }("campaign3");
     }
 
     function testEndCampaignTransfersFunds() public {
@@ -89,7 +89,7 @@ contract CrowdfundingTest is Test {
 
         // Simulate a donation
         vm.prank(donor);
-        crowdfunding.donateToCampaign{value: 0.8 ether}("campaign4");
+        crowdfunding.donateToCampaign{ value: 0.8 ether }("campaign4");
 
         // Move time forward to after the deadline
         vm.warp(block.timestamp + duration + 1);

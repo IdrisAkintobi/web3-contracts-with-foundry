@@ -9,7 +9,7 @@ contract IDrisNFT is ERC721URIStorage, Ownable {
     uint256 public tokenCounter;
     mapping(string => bool) private _tokenURIExists;
 
-    constructor(address initialOwner) ERC721("IDrisNFT", "IDRZ") Ownable(initialOwner) {}
+    constructor(address initialOwner) ERC721("IDrisNFT", "IDRZ") Ownable(initialOwner) { }
 
     function createNFT(address _to, string calldata _tokenHASH, string calldata _tokenMetadataHash)
         public
