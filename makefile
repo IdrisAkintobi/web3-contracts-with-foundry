@@ -15,6 +15,15 @@ MulticallV2: check
 ProposalContract: check
 	forge script script/ProposalContract.s.sol --rpc-url lisk-sepolia --broadcast --verify
 
+Volting: check
+	forge script script/Volting.s.sol --rpc-url lisk-sepolia --broadcast --verify
+
+TokenWithRoles: check
+	forge script script/TokenWithRoles.s.sol --rpc-url lisk-sepolia --broadcast --verify
+
+TimeLockedWallet: check
+	forge script script/TimeLockedWallet.s.sol --rpc-url lisk-sepolia --broadcast --verify
+
 AreaCalculator: check
 	forge script script/AreaCalculator.s.sol --rpc-url lisk-sepolia --broadcast --verify
 
