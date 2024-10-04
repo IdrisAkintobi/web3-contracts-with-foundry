@@ -8,11 +8,6 @@ optimizer_runs = 200
 
 remappings = ["@openzeppelin/=lib/openzeppelin-contracts/"]
 
-# 0x3cE66FA3b60d23AfDCdd6a3eb967ed971AD21d85 - proposal
-# 0xfC52D197937a762CB3407019E751269D85DF7231
-# 0x89A941319b5cb1A664F4Ec714E2bDCBded7379bb - multicall
-# 0x6Fdac889B9D91ef8ccbEA37142fF0DbE0c5B798D
-# Setting up RPC URLs and private keys for networks
 [rpc_endpoints]
 lisk-sepolia = "${LISK_SEPOLIA_RPC_URL}"
 localhost = "${LOCALHOST}"
