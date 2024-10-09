@@ -9,14 +9,14 @@ check:
 	forge test
 
 # Deployment targets
+Voting: check
+	forge script script/Voting.s.sol --rpc-url lisk-sepolia --broadcast --verify
+
 MulticallV2: check
 	forge script script/MulticallV2.s.sol --rpc-url lisk-sepolia --broadcast --verify
 
 ProposalContract: check
 	forge script script/ProposalContract.s.sol --rpc-url lisk-sepolia --broadcast --verify
-
-Volting: check
-	forge script script/Volting.s.sol --rpc-url lisk-sepolia --broadcast --verify
 
 TokenWithRoles: check
 	forge script script/TokenWithRoles.s.sol --rpc-url lisk-sepolia --broadcast --verify
