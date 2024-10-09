@@ -38,8 +38,8 @@ contract ProposalContract {
         require(_votingPeriod > 0, "Voting period must be greater than zero");
         require(_minVotesToPass > 0, "Minimum votes to pass must be greater than zero");
 
-        uint256 proposalId = ++proposalCount;
-        proposals[proposalId] = Proposal({
+        proposalCount++;
+        proposals[proposalCount] = Proposal({
             description: _description,
             recipient: _recipient,
             amount: _amount,
@@ -50,12 +50,12 @@ contract ProposalContract {
         });
 
         emit ProposalCreated(
-            proposalId, _description, _recipient, _amount, block.timestamp + _votingPeriod, _minVotesToPass
+            proposalCount, _description, _recipient, _amount, block.timestamp + _votingPeriod, _minVotesToPass
         );
     }
 
     function vote(uint256 _proposalId) public {
-        require(_proposalId > 0 && _proposalId < proposalCount, "Invalid proposal ID");
+        require(_proposalId > 0 && _proposalId <= proposalCount, "Invalid proposal ID");
         require(!hasVoted[msg.sender][_proposalId], "Already voted on this proposal");
         require(block.timestamp <= proposals[_proposalId].votingDeadline, "Voting period has ended");
 
@@ -66,7 +66,7 @@ contract ProposalContract {
     }
 
     function executeProposal(uint256 _proposalId) public {
-        require(_proposalId > 0 && _proposalId < proposalCount, "Invalid proposal ID");
+        require(_proposalId > 0 && _proposalId <= proposalCount, "Invalid proposal ID");
         Proposal storage proposal = proposals[_proposalId];
 
         require(block.timestamp > proposal.votingDeadline, "Voting period has not ended");
