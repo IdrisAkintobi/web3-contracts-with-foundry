@@ -13,10 +13,8 @@ contract SignatureCheckerTest is Test {
 
     // Set up the test environment
     // Define private keys
-    uint256 validPrivateKey =
-        0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80;
-    uint256 invalidPrivateKey =
-        0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d;
+    uint256 validPrivateKey = 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80;
+    uint256 invalidPrivateKey = 0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d;
 
     function setUp() public {
         // Define valid addresses, including a valid signer
@@ -56,10 +54,7 @@ contract SignatureCheckerTest is Test {
         bytes32 messageHash = signatureChecker.getEthSignedMessageHash(message);
 
         // Sign the message hash with the private key of an invalid signer
-        (uint8 v, bytes32 r, bytes32 s) = vm.sign(
-            invalidPrivateKey,
-            messageHash
-        );
+        (uint8 v, bytes32 r, bytes32 s) = vm.sign(invalidPrivateKey, messageHash);
 
         // Encode the signature
         bytes memory signature = abi.encodePacked(r, s, v);
@@ -86,8 +81,8 @@ contract SignatureCheckerTest is Test {
     function testInvalidECRecover() public {
         // Use a fake signature that would result in an invalid signer (zero address)
         string memory message = "Fake message";
-        bytes
-            memory fakeSignature = hex"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+        bytes memory fakeSignature =
+            hex"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
 
         // Expect the call to revert due to invalid signature
         vm.expectRevert("Invalid signature length");
