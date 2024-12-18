@@ -13,7 +13,8 @@ remappings = [
 
 [rpc_endpoints]
 lisk-sepolia = "${LISK_SEPOLIA_RPC_URL}"
-localhost = "${LOCALHOST}"
+holesky = "${HOLESKY_RPC_URL}"
+localhost = "http://localhost:8545"
 
 # Custom chain for lisk-sepolia
 [etherscan]
